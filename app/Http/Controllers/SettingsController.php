@@ -64,18 +64,16 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function themecolor(Request $request)
-    {
+    public function themecolor(Request $request){
         $color = Settings::findOrFail(1)->theme_color;
 
-       // dd($color);
-
-        $actual_path = str_replace('tcomercia','tcomercia', base_path());
-     //dd($actual_path);
+        //dd($color);
+        $actual_path = str_replace('ofertotal','ofertotal', base_path());
+        //dd($actual_path);
         $style1 = $actual_path.'/public/assets/css/genius1.css';
-      // dd($style1);
+        // dd($style1);
         $style2 = $actual_path.'/public/assets/css/style.css';
-       // dd($style2);
+        //dd($style2);
 
         $file1_contents = file_get_contents($style1);
         $file2_contents = file_get_contents($style2);
@@ -92,8 +90,7 @@ class SettingsController extends Controller
         return redirect('admin/themecolor');
     }
 
-    public function payment(Request $request)
-    {
+    public function payment(Request $request){
 
         DB::table('settings')
             ->where('id', 1)
@@ -103,8 +100,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function about(Request $request)
-    {
+    public function about(Request $request){
         //return $request->all();
         DB::table('settings')
             ->where('id', 1)
@@ -115,8 +111,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function address(Request $request)
-    {
+    public function address(Request $request){
         //return $request->all();
         DB::table('settings')
             ->where('id', 1)
@@ -128,8 +123,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function footer(Request $request)
-    {
+    public function footer(Request $request){
         //return $request->all();
         DB::table('settings')
             ->where('id', 1)
@@ -138,8 +132,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function logo(Request $request)
-    {
+    public function logo(Request $request){
         $logo = $request->file('logo');
         $name = $logo->getClientOriginalName();
         $logo->move('assets/images/logo',$name);
@@ -150,8 +143,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function favicon(Request $request)
-    {
+    public function favicon(Request $request){
         $logo = $request->file('favicon');
         $name = $logo->getClientOriginalName();
         $logo->move('assets/images/',$name);
@@ -162,8 +154,7 @@ class SettingsController extends Controller
         return redirect('admin/settings');
     }
 
-    public function background(Request $request)
-    {
+    public function background(Request $request){
         //return $request->all();
 
         ///return redirect('admin/settings');
@@ -183,8 +174,7 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         //
 
     }
@@ -195,8 +185,7 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         //
     }
 
@@ -207,8 +196,7 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         //
         //return $request->all();
 
@@ -220,8 +208,7 @@ class SettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         //
     }
 }

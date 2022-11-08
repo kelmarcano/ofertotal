@@ -73,6 +73,61 @@
                 <header class="type-1">
 
                     <div class="header-product">
+                        <div class="navigation">
+                            <div class="navigation-header responsive-menu-toggle-class">
+                                <div class="title">Navegacion</div>
+                                <div class="close-menu"></div>
+                            </div>
+                            <div>
+                                <nav>
+                                    <ul>
+                                     <li class="simple-list"><a href="{{url('/')}}" class="">Inicio</a></li>
+                                        <!--  @if($pagesettings[0]->a_status == 1)
+                                                <li class="simple-list"><a href="{{url('/about')}}" class="">Quienes Somos</a></li>
+                                            @endif -->
+                                             <a href="{{url('/category')}}">Categorias</a>
+                                        @foreach($menus as $menu)
+                                            <li class="full-width-columns">
+                                                <a href="{{url('/category')}}/{{$menu->slug}}">{{$menu->name}}</a>
+                                                @if(\App\Category::where('mainid',$menu->id)->where('role','sub')->count() >0)
+                                                <i class="fa fa-chevron-down"></i>
+                                                <div class="submenu submenu2">
+                                                    @foreach(\App\Category::where('mainid',$menu->id)->where('role','sub')->get() as $submenu)
+                                                    <div class="product-column-entry">
+                                                        <div class="submenu-list-title"><a href="{{url('/category')}}/{{$submenu->slug}}">{{$submenu->name}}</a><span class="toggle-list-button"></span></div>
+                                                        <div class="description toggle-list-container">
+                                                            <ul class="list-type-1">
+                                                                @foreach(\App\Category::where('subid',$submenu->id)->where('role','child')->get() as $childmenu)
+                                                                    <li><a href="{{url('/category')}}/{{$childmenu->slug}}"><i class="fa fa-angle-right"></i>{{$childmenu->name}}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                        <div class="hot-mark yellow">Ventas</div>
+                                                    </div>
+                                                    @endforeach
+                                                </div>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                            <!-- @if($pagesettings[0]->f_status == 1)
+                                                <li class="simple-list"><a href="{{url('/faq')}}" class="">FAQ</a></li>
+                                            @endif -->
+                                            
+    
+                                        <li class="fixed-header-visible">
+                                            <a class="fixed-header-square-button open-cart-popup"><i class="fa fa-shopping-cart"></i></a>
+                                            <a class="fixed-header-square-button open-search-popup"><i class="fa fa-search"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </nav>
+                                <div class="navigation-footer responsive-menu-toggle-class">
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <div class="logo-wrapper">
                             <a href="{{url('/')}}" id="logo">
                                 <img alt="" src="{{ URL::asset('assets/images/logo')}}/{{$settings[0]->logo}}">
@@ -106,58 +161,7 @@
                     </div>
 
                     <div class="close-header-layer"></div>
-                    <div class="navigation">
-                        <div class="navigation-header responsive-menu-toggle-class">
-                            <div class="title">Navegacion</div>
-                            <div class="close-menu"></div>
-                        </div>
-                        <div class="nav-overflow">
-                            <nav>
-                                <ul>
-                                 <li class="simple-list"><a href="{{url('/')}}" class="">Inicio</a></li>
-                                    <!--  @if($pagesettings[0]->a_status == 1)
-                                            <li class="simple-list"><a href="{{url('/about')}}" class="">Quienes Somos</a></li>
-                                        @endif -->
-                                         <a href="{{url('/category')}}">Categorias</a>
-                                    @foreach($menus as $menu)
-                                        <li class="full-width-columns">
-                                            <a href="{{url('/category')}}/{{$menu->slug}}">{{$menu->name}}</a>
-                                            @if(\App\Category::where('mainid',$menu->id)->where('role','sub')->count() >0)
-                                            <i class="fa fa-chevron-down"></i>
-                                            <div class="submenu submenu2">
-                                                @foreach(\App\Category::where('mainid',$menu->id)->where('role','sub')->get() as $submenu)
-                                                <div class="product-column-entry">
-                                                    <div class="submenu-list-title"><a href="{{url('/category')}}/{{$submenu->slug}}">{{$submenu->name}}</a><span class="toggle-list-button"></span></div>
-                                                    <div class="description toggle-list-container">
-                                                        <ul class="list-type-1">
-                                                            @foreach(\App\Category::where('subid',$submenu->id)->where('role','child')->get() as $childmenu)
-                                                                <li><a href="{{url('/category')}}/{{$childmenu->slug}}"><i class="fa fa-angle-right"></i>{{$childmenu->name}}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                    <div class="hot-mark yellow">Ventas</div>
-                                                </div>
-                                                @endforeach
-                                            </div>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                        <!-- @if($pagesettings[0]->f_status == 1)
-                                            <li class="simple-list"><a href="{{url('/faq')}}" class="">FAQ</a></li>
-                                        @endif -->
-                                        
-
-                                    <li class="fixed-header-visible">
-                                        <a class="fixed-header-square-button open-cart-popup"><i class="fa fa-shopping-cart"></i></a>
-                                        <a class="fixed-header-square-button open-search-popup"><i class="fa fa-search"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clear"></div>
-                            </nav>
-                            <div class="navigation-footer responsive-menu-toggle-class">
-                            </div>
-                        </div>
-                    </div>
+                  
                 </header>
                 <div class="clear"></div>
             </div>
